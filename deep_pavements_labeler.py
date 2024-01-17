@@ -22,15 +22,16 @@
  ***************************************************************************/
 """
 from qgis.PyQt.QtCore import QSettings, QTranslator, QCoreApplication
-from qgis.PyQt.QtGui import QIcon
-from qgis.PyQt.QtWidgets import QAction
+from qgis.PyQt.QtGui import QIcon, QPixmap
+from qgis.PyQt.QtWidgets import QAction, QLabel
 
 # Initialize Qt resources from file resources.py
 from .resources import *
 # Import the code for the dialog
 from .deep_pavements_labeler_dialog import DeepPavementsLabelerDialog
 import os.path
-
+from time import sleep
+from random import choice
 
 class DeepPavementsLabeler:
     """QGIS Plugin Implementation."""
@@ -66,6 +67,23 @@ class DeepPavementsLabeler:
         # Check if plugin was started the first time in current QGIS session
         # Must be set in initGui() to survive plugin reloads
         self.first_start = None
+
+        # QGraphicsView name: main_gview
+        # QLabel name: q_label1
+
+        # add a test image:
+        # test_img_path = r"D:\segmentation_img_data\curitiba-brazil\104884705113740\104884705113740.png"
+        # test_img_path2 = r"D:\segmentation_img_data\curitiba-brazil\124008969953181\124008969953181.png"
+
+        # self.dlg.q_label1.setPixmap(QPixmap(test_img_path))
+
+        # sleep(10)
+
+        # self.dlg.q_label1.setPixmap(QPixmap(test_img_path2))
+
+
+
+
 
     # noinspection PyMethodMayBeStatic
     def tr(self, message):
@@ -189,6 +207,8 @@ class DeepPavementsLabeler:
             self.first_start = False
             self.dlg = DeepPavementsLabelerDialog()
 
+            self.dlg.default_button.clicked.connect(self.button_action)
+
         # show the dialog
         self.dlg.show()
         # Run the dialog event loop
@@ -198,3 +218,28 @@ class DeepPavementsLabeler:
             # Do something useful here - delete the line containing pass and
             # substitute with your code.
             pass
+
+
+    def button_action(self):
+        # QGraphicsView name: main_gview
+        # QLabel name: q_label1
+
+        # add a test image:
+        s1 = r"D:\segmentation_img_data\curitiba-brazil\104884705113740\104884705113740.png"
+        s2 = r"D:\segmentation_img_data\curitiba-brazil\124008969953181\124008969953181.png"
+        s3 = r"D:\segmentation_img_data\curitiba-brazil\140090981441592\140090981441592.png"
+        s4 = r"D:\segmentation_img_data\curitiba-brazil\140090981441592\140090981441592.png"
+
+        samples = [s1,s2,s3,s4]
+
+        # get one random of the samples
+        test_img_path = choice(samples)
+        self.dlg.q_label1.setPixmap(QPixmap(test_img_path))
+
+        # # add another random image
+        # test_img_path2 = random.choice(samples)
+        # self.dlg.q_label2.setPixmap(QPixmap(test_img_path2))
+        
+        # self.dlg.q_label1.setPixmap(QPixmap(test_img_path))
+        # sleep(10)
+        # self.dlg.q_label1.setPixmap(QPixmap(test_img_path2))
