@@ -232,9 +232,28 @@ class DeepPavementsLabeler:
 
         samples = [s1,s2,s3,s4]
 
+        # dl_w = self.dlg.detection_imglabel.width()
+        # dl_h = self.dlg.detection_imglabel.height()
+
+        # bi_w = self.dlg.binary_imglabel.width()
+        # bi_h = self.dlg.binary_imglabel.height()
+
+        # oi_w = self.dlg.orig_imglabel.width()
+        # oi_h = self.dlg.orig_imglabel.height()
+
+        # Niftly easy:☻
+        self.dlg.detection_imglabel.setScaledContents(True)
+        self.dlg.binary_imglabel.setScaledContents(True)
+        self.dlg.orig_imglabel.setScaledContents(True)
+
         # get one random of the samples
-        test_img_path = choice(samples)
-        self.dlg.q_label1.setPixmap(QPixmap(test_img_path))
+        test_img_path_1 = choice(samples)
+        test_img_path_2 = choice(samples)
+        test_img_path_3 = choice(samples)
+
+        self.dlg.detection_imglabel.setPixmap(QPixmap(test_img_path_1))
+        self.dlg.binary_imglabel.setPixmap(QPixmap(test_img_path_2))
+        self.dlg.orig_imglabel.setPixmap(QPixmap(test_img_path_3))
 
         # # add another random image
         # test_img_path2 = random.choice(samples)

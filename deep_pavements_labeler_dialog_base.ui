@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1745</width>
+    <width>1810</width>
     <height>883</height>
    </rect>
   </property>
@@ -35,8 +35,8 @@
   <widget class="QgsFileWidget" name="root_folder_selector">
    <property name="geometry">
     <rect>
-     <x>910</x>
-     <y>30</y>
+     <x>980</x>
+     <y>10</y>
      <width>801</width>
      <height>41</height>
     </rect>
@@ -47,7 +47,7 @@
     <rect>
      <x>10</x>
      <y>10</y>
-     <width>900</width>
+     <width>902</width>
      <height>530</height>
     </rect>
    </property>
@@ -96,9 +96,9 @@
   <widget class="QLabel" name="orig_imglabel">
    <property name="geometry">
     <rect>
-     <x>460</x>
+     <x>462</x>
      <y>550</y>
-     <width>443</width>
+     <width>451</width>
      <height>321</height>
     </rect>
    </property>
